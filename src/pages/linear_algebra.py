@@ -83,7 +83,7 @@ def app():
         - matrix multiplication the core operation of Deep Learning
     ''')
 
-    st.image('matrix-multiplication.jpg')
+    display_image('matrix-multiplication.png')
 
     st.write(r''' Dot product (inner product):
         - a way to multiply vectors with the result being a scalar
