@@ -1,4 +1,6 @@
 .idea*
 *.egg-info*
 *.whl
-**__pycache__**
+**/__pycache__
+**/*.pyc
+src/pages/__pycache__/*

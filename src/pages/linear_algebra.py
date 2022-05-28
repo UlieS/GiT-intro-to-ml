@@ -6,7 +6,7 @@ from .utils import create_font, display_image
 
 
 def app():
-    create_font(30, 'Linear Algebra used in Machine Learning')
+    create_font(40, 'Linear Algebra used in Machine Learning')
 
     ### Vectors
     create_font(20, "Vectors and Matrices")
@@ -28,7 +28,6 @@ def app():
         \end{bmatrix}
     ''')
 
-    st.markdown("![Alt Text](https://miro.medium.com/max/1400/1*c9WXUJdx00_fniK8h--k1A.gif")
     st.write("""
         - Matrix: array of (row and column) vectors
         - $m x n$ indicates the dimensions of the matrix, below is $2 x 3 $
@@ -40,7 +39,7 @@ def app():
         \end{bmatrix}
     ''')
 
-    st.write(r'''Basic Matrix Operations:'
+    st.write(r'''Basic Matrix Operations:
              - Addition/Subtraction requires identical shape of matrices
              ''')
     st.latex(r'''
@@ -92,9 +91,11 @@ def app():
             - gives the degree of correlation between the two vectors 
     ''')
 
-    x_dir = int(st.text_input('X direction:'))
-    y_dir = int(st.text_input('Y direction:'))
+    x_dir = st.text_input('X direction:')
+    y_dir = st.text_input('Y direction:')
     if x_dir and y_dir:
+        x_dir = int(x_dir)
+        y_dir = int(y_dir)
         plot_vectors(x_dir, y_dir)
         dot_product = np.dot((1, 1), (x_dir, y_dir))
         cos_sim = dot_product/(np.linalg.norm([1, 1])*np.linalg.norm([x_dir, y_dir]))

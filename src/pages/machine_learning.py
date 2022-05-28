@@ -51,6 +51,17 @@ def support_vector_machines():
             ax.set_xlim(-1, 3.5)
     st.pyplot(fig)
 
+    st.markdown('''
+    ##
+    ##
+    ''')
+    create_font(20, 'Fitting an SVM visualized:')
+    st.image("https://miro.medium.com/max/1400/1*c9WXUJdx00_fniK8h--k1A.gif")
+    st.markdown('''
+    ##
+    ##
+    ''')
+
     with st.echo('Fit an SVM classifier in 2 lines of code'):
         # from sklearn.datasets import make_blobs
         # X, y = make_blobs(n_samples=50, centers=2, random_state=0, cluster_std=0.60)

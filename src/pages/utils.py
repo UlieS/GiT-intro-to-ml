@@ -2,13 +2,12 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
-import os
 from PIL import Image
 import urllib
 
 
 def create_font(font_size: int, text: str, color: str = 'Green') -> None:
-    st.markdown("<style>.big-font {font-size:"+str(font_size)+"px !important; color:"+color+"}</style>", unsafe_allow_html=True)
+    st.markdown("<style>.big-font {color:"+color+"; font-size:"+str(font_size)+"px !important; }</style>", unsafe_allow_html=True)
     st.markdown('<p class="big-font">'+text, unsafe_allow_html=True)
 
 

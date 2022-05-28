@@ -9,7 +9,7 @@ from .utils import create_font
 def app():
 
     descriptive_statistics_section()
-    with st.expander("See data"):
+    with st.expander("Expand dataset"):
         st.write('''
         - Let's look at some small scale sample data! 
         - e.g. Survey of instagram users:
@@ -115,7 +115,7 @@ def variability_section():
         - Measures of central tendency: Mode, Median, Mean
         - Example: 
     """)
-    create_font(40, '[1, 3, 4, 6, 6, 7, 8]')
+    create_font(60, '[1, 3, 4, 6, 6, 7, 8]')
     create_font(20, ' --- Median (Middle): 6')
     create_font(20, ' --- Mean (Average): 5')
     create_font(20, ' --- Mode (Most Common): 6')
