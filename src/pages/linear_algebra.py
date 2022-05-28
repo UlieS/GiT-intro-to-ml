@@ -2,7 +2,7 @@ import numpy as np
 import streamlit as st
 import matplotlib.pyplot as plt
 
-from .utils import create_font
+from .utils import create_font, display_image
 
 
 def app():
@@ -82,7 +82,8 @@ def app():
         - resulting dimensions: $ n x m * m x a -> n x a $
         - matrix multiplication the core operation of Deep Learning
     ''')
-    st.markdown("![Alt Text](https://textimgs.s3.amazonaws.com/boundless-algebra/x-multiplication-diagram-2.svg#fixme")
+
+    st.image('matrix-multiplication.jpg')
 
     st.write(r''' Dot product (inner product):
         - a way to multiply vectors with the result being a scalar

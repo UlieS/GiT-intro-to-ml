@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 import numpy as np
 
-from .utils import create_font, plot_svc_decision_function
+from .utils import create_font, plot_svc_decision_function, plot_3D
 
 
 def app():
@@ -103,16 +103,7 @@ def support_vector_machines():
         - Good alternative for classification problems with small, imbalanced datasets
     ''')
 
-def plot_3D(X, y, elev=30, azim=30, ):
-    r = np.exp(-(X ** 2).sum(1))
-    fig = plt.figure()
-    ax = fig.add_subplot(projection='3d')
-    ax.scatter3D(X[:, 0], X[:, 1], r, c=y, s=50, cmap='autumn')
-    ax.view_init(elev=elev, azim=azim)
-    ax.set_xlabel('x')
-    ax.set_ylabel('y')
-    ax.set_zlabel('r')
-    st.pyplot(fig)
-    # interact(plot_3D, elev=[-90, 90], azip=(-180, 180), X=fixed(X), y=fixed(y));
+
+
 
 

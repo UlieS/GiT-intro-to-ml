@@ -1,24 +1,28 @@
 
 import streamlit as st
-import urllib.request
-from PIL import Image
 
-from .utils import create_font
+from .utils import create_font, display_image
 
 
 def app():
 
-    create_font(30, 'Multi Layer Perceptron - The fundamentals of Deep Learning')
+    create_font(30, 'Fundamentals of Deep Learning - Multi Layer Perceptron')
 
     st.write('''
-    Nothing
+    - First applications of "neurons" as logic gates
+    - No learning possible (as there a no learnable weights), merely settable inputs
+    ''')
+    display_image('logic-gates.png')
+
+    st.write('''
+    - Extension into Perceptron algorithm - input is combined into *weighted* sum 
+    - Weights and thresholds are learnable -> Perceptron can learn decision boundary to fit to data 
+    - Weights are randomly initialized and are adjusted during optimization (using Stochastic Gradient Descent)
+    - In its most basic design, a perceptron can be regarded as a single neuron -> still linear model
+    - Linearity constraint has limitations -> *Multi Layer Perceptron* to separate non-linear data 
+    - -> Stacking of layers which feed information from previous layers forward to the next 
     ''')
 
-    urllib.request.urlretrieve(
-      'https://media.geeksforgeeks.org/wp-content/uploads/20210318103632/gfg-300x300.png',
-       "gfg.png")
-
-    img = Image.open("gfg.png")
-    st.image(img)
+    display_image('mlp.png')
 
 

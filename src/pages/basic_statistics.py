@@ -2,7 +2,7 @@ import numpy as np
 import streamlit as st
 import matplotlib.pyplot as plt
 
-from .data import create_data_matrix, generate_boxplot_data, generate_regression_data
+from .data import create_data_matrix, generate_boxplot_data, generate_regression_data, create_level_of_measurement_overview
 from .utils import create_font
 
 
@@ -10,9 +10,11 @@ def app():
 
     descriptive_statistics_section()
     with st.expander("See data"):
-        # TODO: add explanation about dataset
+        st.write('''
+        - Let's look at some small scale sample data! 
+        - e.g. Survey of instagram users:
+        ''')
         data = create_data_matrix()
-        st.write("Sample Instagram Dataset")
         st.table(data)
 
     levels_of_measurement_section()
@@ -23,17 +25,16 @@ def app():
 
 def levels_of_measurement_section():
     st.markdown('''
-        ---
         ##
     ''')
-
+    create_font(20, 'How to look at data?')
     st.write("""
-        - Data needs to be interpreted in the terms of their levels of measurement'
+        - Data needs to be interpreted in the terms of their **levels of measurement**:
         - This helps choose the best methods to analyze/summarize data
-        - eg. Frequency Tables:
     """)
 
-    # TODO: add levels of measurement picture
+    data = create_level_of_measurement_overview()
+    st.table(data)
 
 
 def regression_section():
@@ -76,7 +77,8 @@ def regression_section():
 
     st.write(f"""
                 - estimated regression function to describe this relationship: 
-                    $f(x) = b_0 +b_1x$, with $b_0 - intercept, b_1 - slope$ 
+                    $f(x) = b_0 +b_1x$
+                with $b_0 - intercept, b_1 - slope$ 
                 - calculate the weights by minimizing the distance from each data point to the line 
                 (e.g. method of ordinary least squares)
             """)
@@ -103,13 +105,26 @@ def regression_section():
 
 def variability_section():
     st.markdown('''
-        ---
+        ##
         ##
     ''')
 
+    create_font(20, "Variability of data")
     st.write("""
-        - Another way of describing data: distributions, showing the variability/dispersion of data'
+        - Another way of describing data: distributions, showing the variability/dispersion of data
         - Measures of central tendency: Mode, Median, Mean
+        - Example: 
+    """)
+    create_font(40, '[1, 3, 4, 6, 6, 7, 8]')
+    create_font(20, ' --- Median (Middle): 6')
+    create_font(20, ' --- Mean (Average): 5')
+    create_font(20, ' --- Mode (Most Common): 6')
+
+    st.markdown('''
+        ##
+        ##
+    ''')
+    st.write("""
         - Standard Deviation/Variance: measures to gauge how far away a data point is from the center on average
         - e.g Boxplot:
     """)
@@ -121,7 +136,7 @@ def variability_section():
 
 
 def descriptive_statistics_section():
-    create_font(30, 'Descriptive Statistics')
+    create_font(40, 'Descriptive Statistics')
     st.write("Why do we need Statistics?")
     st.write("""
         - to think about data in a structured/organized way
@@ -132,7 +147,12 @@ def descriptive_statistics_section():
 
 
 def distribution_section():
-    create_font(30, 'What is a distribution?')
+    st.markdown('''
+        ##
+        ##
+    ''')
+
+    create_font(40, 'What is a distribution?')
 
     st.write(''' -> function which shows all the possible values data could take + their frequency
              - helps describe properties of data and the relationship between observations
