@@ -154,19 +154,22 @@ def distribution_section():
 
     create_font(40, 'What is a distribution?')
 
-    st.write(''' → function which shows all the possible values data could take + their frequency
-             - helps describe properties of data and the relationship between observations
-             - makes future observations more predictable
-             - ''')
-    st.write('''How do we describe distributions?
-            - function dependant on key parameters, eg. normal distribution: sigma (standard deviation) and mu (mean) 
+    st.write(''' 
+        → function which shows all the possible values data could take + their frequency
+         - helps describe properties of data and the relationship between observations
+         - makes future observations more predictable
+         - 
+    ''')
+    st.write('''
+        How do we describe distributions?
+        - function dependant on key parameters, eg. normal distribution: sigma (standard deviation) and mu (mean) 
         ''')
     display_image('normal-dist-formula.png')
 
     st.write('''
-            - data will fall within the range specified by these parameters with a certain probability 
-            - more data points → more refined "shape" of empirical distributions
-            ''')
+        - data will fall within the range specified by these parameters with a certain probability 
+        - more data points → more refined "shape" of empirical distributions
+    ''')
 
     create_font(25, 'Example: Normal Distribution (Gaussian)')
 

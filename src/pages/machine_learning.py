@@ -11,8 +11,8 @@ def app():
     st.title('(Traditional) Machine Learning and Deep Learning')
     st.write(r'''
         - **What's the difference?**
-        - Before Deep Learning: manual feature engineering, need expert knowledge about topic: how well do the features encode data patterns?
-        - Deep Learning exposes patterns in the data/learns the patterns with automatic feature extraction (-> un-explainibility issue in Deep Learning) 
+        - Prior to Deep Learning: manual feature engineering, expert knowledge about topic required: how well do features encode data patterns?
+        - Deep Learning exposes patterns in the data/learns the patterns with automatic feature extraction (→ un-explainibility issue in Deep Learning) 
 
         
         - **Supervised Machine Learning**:
@@ -28,7 +28,7 @@ def app():
     with st.expander('Support Vector Machines'):
         st.write(r'''
             - Powerful supervised algorithms for regression or classification
-            - Tries to find a hyperplane (e.g. a line in a 2D space) that divides data into separate classes
+            - Try to find a hyperplane (e.g. a line in a 2D space) that divides data into separate classes
             - Intuition: Not just any hyperplane (line), but the one that maximizes the margin between the two classes
             to account for unseen data = "optimal model"
             - works well with few samples and is robust to class imbalance (unlike most deep learning models)
@@ -77,7 +77,6 @@ def support_vector_machines():
     fig, ax = plt.subplots(1)
     ax.scatter(X[:, 0], X[:, 1], c=y, s=50, cmap='autumn')
     plot_svc_decision_function(model)
-    # fig.title('Plotting the optimal decision hyperplane')
     st.pyplot(fig)
 
     st.markdown('''

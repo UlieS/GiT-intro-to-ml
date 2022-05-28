@@ -39,8 +39,9 @@ def app():
         \end{bmatrix}
     ''')
 
-    st.write(r'''Basic Matrix Operations:
-             - Addition/Subtraction requires identical shape of matrices
+    st.write('''
+            Basic Matrix Operations:
+             - **Addition/Subtraction** requires identical shape of matrices
              ''')
     st.latex(r'''
         \begin{bmatrix}
@@ -59,7 +60,7 @@ def app():
         \end{bmatrix}
     ''')
 
-    st.write(r'''- Multiplication by a scalar:    
+    st.write(r'''- **Multiplication by a scalar**:    
     ''')
     st.latex(r'''
         2
@@ -75,16 +76,20 @@ def app():
         \end{bmatrix}
     ''')
 
-    st.write(r'''Matrix Multiplication:
+    st.write('''
+        **Matrix Multiplication**:
         - elements of the rows in the first matrix are multiplied with corresponding columns in the second matrix
         - requirement: $ n x m; m x b $ (number of columns of first matrix == number of rows of second matrix)
-        - resulting dimensions: $ n x m * m x a -> n x a $
-        - matrix multiplication the core operation of Deep Learning
+        - resulting dimensions: $ n x m * m x a → n x a $
+        - matrix multiplication is the core operation of Deep Learning
     ''')
 
     display_image('matrix-multiplication.png')
 
-    st.write(r''' Dot product (inner product):
+    st.markdown("""
+        ##
+    """)
+    st.write(''' **Dot product** (inner product):
         - a way to multiply vectors with the result being a scalar
         - geometric meaning: 
             - indicates angle between the two vectors
@@ -101,13 +106,13 @@ def app():
         cos_sim = dot_product/(np.linalg.norm([1, 1])*np.linalg.norm([x_dir, y_dir]))
         st.write(fr'''
         - Angle between vectors: Dot product = {round(np.degrees(dot_product), 1)}
-        - How to interpret this value? Cosine similarity!
+        - How to interpret this value? **Cosine similarity**!
         Intuition: 
-        1. agnle = 90 degrees (vectors are perpendicular): 
+        1. angle = 90 degrees (vectors are perpendicular): 
         - correlation between the two vector is 0, vectors are independent to each other
         2. angle = 0 degrees:
         - correlation between the two vector is 1, vectors are totally dependent to each other
-        - *correlation between the vectors above: {round(cos_sim, 3)}*
+        - **correlation between the vectors above: {round(cos_sim, 3)}**
     ''')
     else:
         plot_vectors()
