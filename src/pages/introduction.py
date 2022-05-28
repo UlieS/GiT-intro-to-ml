@@ -4,10 +4,14 @@ from .utils import create_font, display_image
 
 
 def app():
-    st.title('Girls in Tech - A visual introduction to Machine Learning')
 
     create_font(30, '1. Goals of this workshop')
     display_image('ml-meme.png')
+
+    st.markdown('''
+            ##
+            ##
+        ''')
 
     st.write('''
         - Build intuition for the statistical fundamentals of Machine Learning 
@@ -18,11 +22,12 @@ def app():
 
     create_font(30, '2. Introductions - Instructor and Attendees')
     st.write("""
-        - My name is Ulie, I live in San Francisco 
+        - My name is Ulie and I live in San Francisco
+        - This is my first workshop for Girls in Tech
         - 3+ years of experience in Machine Learning, specifically Computer Vision and Natural Language Processing 
         - Bachelor's degree in Psychology + Computer Science (OvG University Magdeburg, Germany)
         - Master's degree in Data and Knowledge Engineering (OvG University Magdeburg, Germany)
         - Hobbies: running (training for the SF marathon right now!), baking bread, traveling
     """)
 
-    create_font(30, "What's your name and your motivation to attent this workshop today?")
+    create_font(30, "What's your name and your motivation for attending this workshop today?")

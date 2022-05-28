@@ -8,18 +8,18 @@ from .utils import create_font, plot_svc_decision_function, plot_3D
 
 
 def app():
-    create_font(30, '(Traditional) Machine Learning and Deep Learning')
+    st.title('(Traditional) Machine Learning and Deep Learning')
     st.write(r'''
-        - *What's the difference?*
+        - **What's the difference?**
         - Before Deep Learning: manual feature engineering, need expert knowledge about topic: how well do the features encode data patterns?
         - Deep Learning exposes patterns in the data/learns the patterns with automatic feature extraction (-> un-explainibility issue in Deep Learning) 
 
         
-        - *Supervised Machine Learning*:
+        - **Supervised Machine Learning**:
             - requires data with ground truth (labels)
             - models are specifically being corrected/guided during learning process
             - e.g. Decision Trees/Random Forests, Support Vector Machines, Convolutional Neural Networks 
-        - *Unsupervised Machine Learning*:
+        - **Unsupervised Machine Learning**:
             - no need for labeled data
             - model identify/derive patterns on their own
             - e.g. Clustering, AutoEncoders (input reconstruction)

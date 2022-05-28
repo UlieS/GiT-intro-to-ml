@@ -3,7 +3,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 
 from .data import create_data_matrix, generate_boxplot_data, generate_regression_data, create_level_of_measurement_overview
-from .utils import create_font
+from .utils import create_font, display_image
 
 
 def app():
@@ -141,8 +141,8 @@ def descriptive_statistics_section():
     st.write("""
         - to think about data in a structured/organized way
         - to draw conclusions about the dataset or make predictions about its future
-        - Cases: individual data points
-        - Variables: attributes that each data point takes
+        - *Cases* = individual data points
+        - *Variables* = attributes that each data point takes
     """)
 
 
@@ -154,19 +154,22 @@ def distribution_section():
 
     create_font(40, 'What is a distribution?')
 
-    st.write(''' -> function which shows all the possible values data could take + their frequency
+    st.write(''' → function which shows all the possible values data could take + their frequency
              - helps describe properties of data and the relationship between observations
              - makes future observations more predictable
              - ''')
     st.write('''How do we describe distributions?
-            - key parameters, eg. normal distribution: sigma (variation) and mu (average)
+            - function dependant on key parameters, eg. normal distribution: sigma (standard deviation) and mu (mean) 
+        ''')
+    display_image('normal-dist-formula.png')
+
+    st.write('''
             - data will fall within the range specified by these parameters with a certain probability 
-            - more data points -> more refined "shape" of empirical distributions
+            - more data points → more refined "shape" of empirical distributions
             ''')
 
     create_font(25, 'Example: Normal Distribution (Gaussian)')
 
-    st.text('Empiric observations of different heights in cm')
     number_of_heights = st.slider('Select number of people (n) observed', 0, 100, 5)
     type_of_distribution = st.selectbox(label='Type of distribution', options=['Normal', 'Uniform', 'Chi-Square'])
     sigma = st.slider('Select variety of heights (sigma)', 1, 10, 10)
@@ -186,9 +189,8 @@ def distribution_section():
 
     fig, ax = plt.subplots(2)
 
-    if not show_histogram:
-        ax[0].scatter(heights, constant_x)
+    ax[0].scatter(heights, constant_x)
+
     if show_histogram:
         ax[1].hist(heights)
-
         st.pyplot(fig)
