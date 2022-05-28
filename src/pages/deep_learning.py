@@ -20,7 +20,7 @@ def app():
     - Weights are randomly initialized and are adjusted during optimization (using Stochastic Gradient Descent)
     - In its most basic design, a perceptron can be regarded as a single neuron → still linear model
     - Linearity constraint has limitations → *Multi Layer Perceptron* to separate non-linear data 
-    - -> Stacking of layers which feed information from previous layers forward to the next 
+    - → Stacking of layers which feed information from previous layers forward to the next 
     ''')
 
     display_image('mlp.png')

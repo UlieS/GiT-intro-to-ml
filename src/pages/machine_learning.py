@@ -8,7 +8,7 @@ from .utils import create_font, plot_svc_decision_function, plot_3D
 
 
 def app():
-    st.title('(Traditional) Machine Learning and Deep Learning')
+    create_font(30, '(Traditional) Machine Learning and Deep Learning')
     st.write(r'''
         - **What's the difference?**
         - Prior to Deep Learning: manual feature engineering, expert knowledge about topic required: how well do features encode data patterns?

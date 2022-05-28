@@ -55,13 +55,17 @@ def regression_section():
     n = st.slider('Number of cases', 1, 20, 200)
 
     fig = plt.figure(figsize=(5, 5))
-    axes = fig.add_axes([0,0,1,1,])
+    axes = fig.add_axes([0, 0, 1, 1])
 
     data = generate_regression_data(variation, n)
     x = range(len(data))
     axes.scatter(x, data)
     axes.set_xlim([0,200])
     axes.set_ylim([-100,200])
+    axes.set_xlabel('X - Predictor, independent variable')
+    axes.set_ylabel('Y - Response, dependant variable')
+
+    st.pyplot(fig)
 
     estimated_intercept = st.text_input('Intercept (b0)')
     estimated_slope = st.text_input('Slope (b1)')
@@ -73,14 +77,13 @@ def regression_section():
         # draw guessed line
         plt.plot(x, estimated_ys)
 
-    st.pyplot(fig)
+
 
     st.write(f"""
                 - estimated regression function to describe this relationship: 
                     $f(x) = b_0 +b_1x$
                 with $b_0 - intercept, b_1 - slope$ 
-                - calculate the weights by minimizing the distance from each data point to the line 
-                (e.g. method of ordinary least squares)
+                - calculate the weights by minimizing the distance from each data point to the line (e.g. method of ordinary least squares)
             """)
 
     x = np.array(x).reshape(-1,1)
@@ -90,17 +93,20 @@ def regression_section():
         with st.echo():
             from sklearn.linear_model import LinearRegression
             model = LinearRegression().fit(x,y)
-            st.write(f"""Intercept: {round(model.intercept_, 2)}/n, Slope: {round(model.coef_[0],2)}/n, '
-                        Coefficient of Determination (R^2): {round(model.score(x, y), 2)}/n""")
+        st.write(f"""
+                - Intercept: {round(model.intercept_, 2)} 
+                - Slope: {round(model.coef_[0],2)}
+                - Coefficient of Determination ($R^2$): {round(model.score(x, y), 2)}
+        """)
 
         st.write(f""" 
-                    - Evaluation of goodness of fit: $R^2$ - How well does the equation describe the data?
-                    - $R^2$ measures the explained variance of two variables (i.e. to what extent can the behavior of 
-                    the response be explained by the dependant? How much is left to explain by other unknown variables?)
-                    - Assuming a good enough fit: plug-in in to original formula:'
-                    $f(x) = {round(model.intercept_, 2)} +{round(model.coef_[0],2)}x$'
-                    'Use to make predictions!
-                """)
+                - Evaluation of goodness of fit: $R^2$ - How well does the equation describe the data?
+                - $R^2$ measures the explained variance of two variables (i.e. to what extent can the behavior of 
+                the response be explained by the dependant? How much is left to explain by other unknown variables?)
+                - Assuming a good enough fit: plug in to original formula:
+                $f(x) = {round(model.intercept_, 2)} +{round(model.coef_[0],2)}x$'
+                - Use to make predictions!
+            """)
 
 
 def variability_section():
@@ -158,7 +164,6 @@ def distribution_section():
         → function which shows all the possible values data could take + their frequency
          - helps describe properties of data and the relationship between observations
          - makes future observations more predictable
-         - 
     ''')
     st.write('''
         How do we describe distributions?
@@ -171,11 +176,11 @@ def distribution_section():
         - more data points → more refined "shape" of empirical distributions
     ''')
 
-    create_font(25, 'Example: Normal Distribution (Gaussian)')
+    create_font(25, 'Example: Distribution of Heights')
 
     number_of_heights = st.slider('Select number of people (n) observed', 0, 100, 5)
     type_of_distribution = st.selectbox(label='Type of distribution', options=['Normal', 'Uniform', 'Chi-Square'])
-    sigma = st.slider('Select variety of heights (sigma)', 1, 10, 10)
+    sigma = st.slider('Select variety of heights', 1, 10, 10)
     show_histogram = st.checkbox(label='Show Histogram')
 
     # histogram
@@ -191,9 +196,15 @@ def distribution_section():
     constant_x = [1] * len(heights)
 
     fig, ax = plt.subplots(2)
-
+    fig.subplots_adjust(hspace=0.5)
+    ax[0].title.set_text('One dimensional distribution')
+    ax[0].set_xlabel('Height in cm')
+    ax[0].yaxis.set_visible(False)
     ax[0].scatter(heights, constant_x)
 
     if show_histogram:
         ax[1].hist(heights)
+        ax[1].title.set_text('Two dimensional distribution (Histogram)')
+        ax[1].set_xlabel('Height in cm')
+        ax[1].set_ylabel('Number of occurrences')
         st.pyplot(fig)

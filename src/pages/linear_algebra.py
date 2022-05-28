@@ -89,7 +89,8 @@ def app():
     st.markdown("""
         ##
     """)
-    st.write(''' **Dot product** (inner product):
+    st.write(''' 
+        **Dot product** (inner product):
         - a way to multiply vectors with the result being a scalar
         - geometric meaning: 
             - indicates angle between the two vectors
@@ -101,18 +102,24 @@ def app():
     if x_dir and y_dir:
         x_dir = int(x_dir)
         y_dir = int(y_dir)
+        unit_vector = [x_dir, y_dir]/np.linalg.norm([x_dir, y_dir])
         plot_vectors(x_dir, y_dir)
-        dot_product = np.dot((1, 1), (x_dir, y_dir))
-        cos_sim = dot_product/(np.linalg.norm([1, 1])*np.linalg.norm([x_dir, y_dir]))
+        dot_product = np.dot((1, 1), unit_vector)
+        cos_sim = dot_product/(np.linalg.norm([1, 1])*np.linalg.norm(unit_vector))
+
+        def angle(a, b):
+            return np.degrees(np.arccos(np.dot(a, b)/ (np.linalg.norm(a) * np.linalg.norm(b))))
+
         st.write(fr'''
-        - Angle between vectors: Dot product = {round(np.degrees(dot_product), 1)}
-        - How to interpret this value? **Cosine similarity**!
-        Intuition: 
+        - Angle between vectors: Dot product = {round(angle([1,1], unit_vector), 1)}
+        - How to interpret this value?
+
+        **Cosine similarity: Intuition**: 
         1. angle = 90 degrees (vectors are perpendicular): 
         - correlation between the two vector is 0, vectors are independent to each other
         2. angle = 0 degrees:
         - correlation between the two vector is 1, vectors are totally dependent to each other
-        - **correlation between the vectors above: {round(cos_sim, 3)}**
+        **correlation between the vectors above: {round(cos_sim, 3)}**
     ''')
     else:
         plot_vectors()
